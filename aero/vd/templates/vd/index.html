@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Главная{% endblock %} Виртуальные диски</title>
+</head>
+<body>
+
+<header>
+    <h1></h1>
+</header>
+
+<div>
+    <ul>
+        <li><a class="" href="#">Регистрация</a></li>
+
+
+        {% if user.is_authenticated %}
+        <li>
+            <a class="" href="#">Изменить личныеданные</a>
+            <a class="" href="#">Изменить пароль</a>
+            <div class=""></div>
+            <a class="" href="#">Выйти</a>
+            <a class="" href="">Удалить</a>
+        </li>
+
+        {% else %}
+        <li class="nav-item"><a class="nav-link" href="#">Вход</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+
+<div>
+    <nav class="">
+        <a class="nav-link root" href="{% url 'vd:index' %}">Главная</a>
+
+        <a class="nav-link root" href="">О сайте</a>
+    </nav>
+
+    {% for out in output_view %}
+    <section>
+        <table border="1">
+            <tr>
+                <th>Имя диска</th>
+                <th>Размер</th>
+                <th>Mountpoint</th>
+                <th>Отмонтировать диск</th>
+                <th>Форматировать диск</th>
+                <th>Примонтировать диск</th>
+            </tr>
+            <tr>
+                <td>{{out.name}}</td>
+                <td>{{out.size}}</td>
+                <td>{{out.mountpoint}}</td>
+                <td><button>Отмонтировать<script>{{ script_umount }}</script></button></td>
+                <td><button>Форматировать<script>{{ script_format }}</script></button></td>
+                <td><button>Примонтировать<script>{{ script_mount }}</script></button></td>
+            </tr>
+                <tr>
+                <td>Ячейка</td>
+                <td>Ячейка</td>
+                <td>Ячейка</td>
+                <td>Ячейка</td>
+                <td>Ячейка</td>
+                <td>Ячейка</td>
+            </tr>
+        </table>
+        {{output}}
+    </section>
+</div>
+
+
+<footer>
+    <p>&copy; _Alexander Vinitsky_</p>
+</footer>
+</body>
+</html>
